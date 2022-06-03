@@ -9,15 +9,15 @@ const PORT = process.env.PORT || 8080;
 const API_KEY = process.env.API_KEY;
 const API_URL = process.env.API_URL;
 
-app.use(express.static(__dirname + '/dist/ng-marvel'));
+app.use(express.static(__dirname + '/dist/angular-api'));
 
-app.get('/xpto', (req, res) => {
+app.get('/public', (req, res) => {
     res.send(API_KEY);
 });
 
 
 app.get('/*', (req, res) => {
-    res.sendFile(__dirname + '/dist/ng-marvel/index.html');
+    res.sendFile(__dirname + '/dist/angular-api/index.html');
 });
 
 app.listen(PORT, () => {
