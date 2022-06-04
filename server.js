@@ -1,6 +1,6 @@
 const baseUrl = 'http://gateway.marvel.com/v1/public/characters';
-const apiKey = '98b8d9604bdff26fadfb159e8aad2d76';
-const hash = 'd7e335c35463a024e5dad732278e54ef'
+const apiKey = '79d5fcd6254ef126e8de3032036fc3f9';
+const hash = '316c2e3a4fad53fed7a1a8103a513085';
 const ts = 1
 const axios = require('axios');
 
