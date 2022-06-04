@@ -1,27 +1,57 @@
-const express = require('express');
+const baseUrl = 'http://gateway.marvel.com/v1/public/characters';
+const apiKey = '98b8d9604bdff26fadfb159e8aad2d76';
+const hash = 'd7e335c35463a024e5dad732278e54ef'
+const ts = 1
+const axios = require('axios');
 
-const path = require('path');
+function getAll(req, res) {
+    var url = `${baseUrl}?ts=${ts}&apikey=${apiKey}&hash=${hash}`
+    return axios.get(url)
 
-const app = express();
+}
 
-const PORT = process.env.PORT || 8080;
+function getById(req, res) {
+    var id = req.params.id;
+    var url = `${baseUrl}/${id}?ts=${ts}&apikey=${apiKey}&hash=${hash}`
+    return axios.get(url)
 
-const API_KEY = process.env.API_KEY;
-const API_URL = process.env.API_URL;
+}
 
-app.use(express.static(__dirname + '/dist/angular-api'));
+function getByComics(req, res) {
+    var id = req.params.id;
+    var url = `${baseUrl}/${id}/comics?ts=${ts}&apikey=${apiKey}&hash=${hash}`
+    return axios.get(url)
 
-app.get('/public', (req, res) => {
-    res.send(API_KEY);
-});
+}
+
+function getByEvent(req, res) {
+    var id = req.params.id;
+    var url = `${baseUrl}/${id}/events?ts=${ts}&apikey=${apiKey}&hash=${hash}`
+    return axios.get(url)
+
+}
+
+function getBySerie(req, res) {
+    var id = req.params.id;
+    var url = `${baseUrl}/${id}/series?ts=${ts}&apikey=${apiKey}&hash=${hash}`
+    return axios.get(url)
+
+}
+
+function getByStory(req, res) {
+    var id = req.params.id;
+    var url = `${baseUrl}/${id}/stories?ts=${ts}&apikey=${apiKey}&hash=${hash}`
+    return axios.get(url)
+
+}
 
 
-app.get('/*', (req, res) => {
-    res.sendFile(__dirname + '/dist/angular-api/index.html');
-});
 
-app.listen(PORT, () => {
-    console.log(API_KEY);
-    console.log(API_URL);
-    console.log(`Server listening on port ${PORT}`);
-})
+module.exports = {
+    getAll,
+    getById,
+    getByComics,
+    getByEvent,
+    getBySerie,
+    getByStory,
+}
