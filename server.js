@@ -1,9 +1,14 @@
-const express = require('express');
-const path = require('path');
+const express = require("express");
 const app = express();
-app.use(express.static(__dirname + '/dist/angular-api'));
-app.get('/*', function(req,res)
 
-{res.sendFile(path.join(__dirname+'/dist/angular-api/index.html'));});
+const appName = "trabalho-api-angular";
 
-app.listen(process.env.PORT || 8080);
+const outputPath = `${__dirname}/dist/${appName}`;
+
+app.use(express.static(outputPath));
+
+app.get("/*", (req, res) => {
+  res.sendFile(`${outputPath}/index.html`);
+});
+
+app.listen(process.env.PORT);
