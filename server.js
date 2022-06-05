@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-const appName = "trabalho-api-angular";
+const appName = "fa-marvel";
 
 const outputPath = `${__dirname}/dist/${appName}`;
 
